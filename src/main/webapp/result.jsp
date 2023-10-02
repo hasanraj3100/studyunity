@@ -16,13 +16,15 @@
 <body>
     <header>
         <div class="logo">
+            <a href="<% out.println(request.getContextPath() + "/"); %>">
             <img src="images/logo.png" alt="">
+            </a>
         </div>
         <div class="menusection">
-            <a href="" class="btn-normal">Group Study</a>
-            <a href="" class="btn-normal">Share Material</a>
-            <a href="" class="btn-normal">Profile</a>
-            <a href="" class="btn-normal">Logout</a>
+            <a href="group_study" class="btn-normal">Group Study</a>
+            <a href="share_material" class="btn-normal">Share Material</a>
+            <a href="profile" class="btn-normal">Profile</a>
+            <a href="logout" class="btn-normal">Logout</a>
         </div>
         <div class="clr"></div>
     </header>
@@ -34,22 +36,11 @@
                     <h1>${totalpost } Notes Found For "${topic }"</h1>
 
                 </div>
-                <div class="filter-section">
-                    <form>
-                        Sort by: 
-                        <select name="filter" id="">
-                            <option value="upvote">Upvote</option>
-                            <option value="downvote">Downvote</option>
-                            <option value="dateAsc">Date Ascending</option>
-                            <option value="dateDsc">Date Descending</option>
-                        </select>
-                        <button type="submit">Filter</button>
-                    </form>
-                </div>
+               <hr>
                 
                 <c:forEach var="post" items="${posts }">
                 <div class="search-item">
-                    <h2>${post.getTitle() }</h2>
+                    <a href="viewnote?id=${post.getId() }"><h2>${post.getTitle() }</h2></a>
                     <span class="name">	
                     	${post.getUserName()}
                      </span>

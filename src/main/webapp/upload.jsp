@@ -12,13 +12,15 @@
 
     <header>
         <div class="logo">
+            <a href="<% out.println(request.getContextPath() + "/"); %>">
             <img src="images/logo.png" alt="">
+            </a>
         </div>
         <div class="menusection">
-       		<a href="${gsPath }" class="btn-normal">Group Study</a>
-            <a href="${sharePath }" class="btn-normal">Share Material</a>
-            <a href="${profilePath}" class="btn-normal">Profile</a>
-            <a href="${logoutPath }" class="btn-normal">Logout</a>
+       		<a href="group_study" class="btn-normal">Group Study</a>
+            <a href="share_material" class="btn-normal">Share Material</a>
+            <a href="profile" class="btn-normal">Profile</a>
+            <a href="logout" class="btn-normal">Logout</a>
         </div>
         <div class="clr"></div>
     </header>
@@ -27,7 +29,7 @@
         <div class="upload-section">
             <div>
                 <h1>Share a class material</h1>
-                <form action="shareMaterial" method="post" enctype="multipart/form-data">
+                <form action="share_material" method="post" enctype="multipart/form-data">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title">
                 

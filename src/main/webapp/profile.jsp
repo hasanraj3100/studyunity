@@ -18,10 +18,10 @@
             </a>
         </div>
         <div class="menusection">
-            <a href="${RoutePaths.getPath("gs") }" class="btn-normal">Group Study</a>
-            <a href="${RoutePaths.getPath("sm") }" class="btn-normal">Share Material</a>
-            <a href="${RoutePaths.getPath("profile") }" class="btn-normal">Profile</a>
-            <a href="${RoutePaths.getPath("logout") }" class="btn-normal">Logout</a>
+            <a href="group_study" class="btn-normal">Group Study</a>
+            <a href="share_material" class="btn-normal">Share Material</a>
+            <a href="profile" class="btn-normal">Profile</a>
+            <a href="logout" class="btn-normal">Logout</a>
         </div>
         <div class="clr"></div>
     </header>

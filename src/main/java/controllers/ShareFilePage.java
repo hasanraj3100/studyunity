@@ -60,6 +60,15 @@ public class ShareFilePage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("username")==null) {
+			request.setAttribute("errortext", "You must login first");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		
+		
 		int userID = Integer.parseInt( session.getAttribute("userID").toString());
 		Post post=null;
 		PostController pc = new PostController();
@@ -84,12 +93,19 @@ public class ShareFilePage extends HttpServlet {
 	//	System.out.println("PP: " + pp);
 		
 		Part filePart = request.getPart("file");
-		String fileName = filePart.getSubmittedFileName();
 		
-		System.out.println("Filename: " + fileName);
+		if(filePart!=null ) {
+			String fileName = filePart.getSubmittedFileName();
+			
+			System.out.println("Filename: " + fileName);
+			
+			filePart.write(fileName);
+			
+			
+		}
+	
 		
-		filePart.write(fileName);
-		
+		response.sendRedirect(request.getContextPath());
 		
 		
 		

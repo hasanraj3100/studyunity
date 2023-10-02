@@ -14,11 +14,16 @@ public class PostController {
 	Post post;
 	
 	
-	public ArrayList<Post> allPosts() throws ClassNotFoundException, SQLException {
+	public ArrayList<Post> allPosts(String keyword) throws ClassNotFoundException, SQLException {
 		ArrayList<Post> posts = new ArrayList<>();
 		
 		Connection con = DBConnector.getInstance();
-		PreparedStatement st = con.prepareStatement("Select * from posts;");
+		String query = "Select * from posts where title like \"%" +keyword+ "%\";";
+		System.out.println(query);
+		PreparedStatement st = con.prepareStatement(query);
+		
+		
+	//	st.setString(1, keyword);
 		
 		ResultSet result = st.executeQuery();
 		
@@ -79,12 +84,31 @@ public class PostController {
 			int userID = result.getInt("userID");
 			
 			String username = uc.findUser(userID).getName();
-			new Post(result.getInt("id"), result.getString("title"), result.getString("body"),
+			post= new Post(result.getInt("id"), result.getString("title"), result.getString("body"),
 					result.getInt("userID"), result.getString("date"), result.getInt("upvote"), result.getInt("downvote")
 					, username, result.getInt("level"));
 		}
 		
 		return this.post;
+	}
+	
+	public void upvotePost(int id) throws ClassNotFoundException, SQLException {
+		Connection con = DBConnector.getInstance();
+		String query = "UPDATE posts set upvote=upvote+1 where id=?;";
+		PreparedStatement st = con.prepareStatement(query);
+		st.setInt(1, id);
+		
+		 st.executeUpdate();
+		
+	}
+	
+	public void downvotePost(int id) throws SQLException, ClassNotFoundException {
+		Connection con = DBConnector.getInstance();
+		String query = "UPDATE posts set downvote=downvote+1 where id=?;";
+		PreparedStatement st = con.prepareStatement(query);
+		st.setInt(1, id);
+		
+		 st.executeUpdate();
 	}
 	
 }

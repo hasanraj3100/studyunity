@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import models.Post;
 
 /**
@@ -28,14 +29,26 @@ public class ViewNote extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession();
+		
+		if(session.getAttribute("username")==null) {
+			request.setAttribute("errortext", "You must login first");
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
+			return ;
+		}
+		
 		int id=0;
 		 id =  Integer.parseInt(request.getParameter("id"));
+		
+		 
 		
 		if(id==0 ) {
 			response.sendRedirect(request.getContextPath());
 			return;
 		}
-		
+//		
 		PostController pc = new PostController();
 		Post ps=null;
 		try {
@@ -46,6 +59,7 @@ public class ViewNote extends HttpServlet {
 		}
 		
 		if(ps==null) {
+	
 			response.sendRedirect(request.getContextPath());
 			return;
 		} 

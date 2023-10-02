@@ -18,10 +18,10 @@
             </a>
         </div>
         <div class="menusection">
-            <a href="${gsPath }" class="btn-normal">Group Study</a>
-            <a href="${sharePath }" class="btn-normal">Share Material</a>
-            <a href="${profilePath}" class="btn-normal">Profile</a>
-            <a href="${logoutPath }" class="btn-normal">Logout</a>
+            <a href="group_study" class="btn-normal">Group Study</a>
+            <a href="share_material" class="btn-normal">Share Material</a>
+            <a href="profile" class="btn-normal">Profile</a>
+            <a href="logout" class="btn-normal">Logout</a>
         </div>
         <div class="clr"></div>
     </header>
@@ -58,17 +58,7 @@
                         <p class="score">Your Influence: ${user.getInfluence()}</p>
                     </div>
                 </div>
-                <div class="popular-section">
-                    <h2>Popular Topics</h2>
-                    <ul>
-                        <li><a href="">Physics</a></li>
-                        <li><a href="">Computer Science</a></li>
-                        <li><a href="">Algebra</a></li>
-                        <li><a href="">Human brain</a></li>
-                        <li><a href="">Marks Law</a></li>
-
-                    </ul>
-                </div>
+                
             </div>
             <div class="clr"></div>
         </div>

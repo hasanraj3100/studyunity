@@ -18,8 +18,8 @@
             </a>
         </div>
         <div class="menusection">
-            <a href="${RoutePaths.getPath("login")}" class="btn-normal">Login</a>
-            <a href="${RoutePaths.getPath("register")}" class="btn-normal">Register</a>
+            <a href="login" class="btn-normal">Login</a>
+            <a href="register" class="btn-normal">Register</a>
         </div>
         <div class="clr"></div>
     </header>

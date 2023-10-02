@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import models.User;
 
 /**
@@ -56,7 +57,7 @@ public class Register extends HttpServlet {
 		}
 		
 		if(success==1) {
-			response.getWriter().println("Registration successfull");
+			response.sendRedirect("login");
 		} else if(success==2) {
 			RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
 			request.setAttribute("errortext", "User name already exists");

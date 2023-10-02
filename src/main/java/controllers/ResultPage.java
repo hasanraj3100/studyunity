@@ -38,7 +38,7 @@ public class ResultPage extends HttpServlet {
 		ArrayList<Post> posts = null;
 		
 		try {
-			posts = pc.allPosts();
+			posts = pc.allPosts(keyword);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
